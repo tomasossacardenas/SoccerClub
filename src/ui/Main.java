@@ -22,13 +22,13 @@ public static Scanner entrada = new Scanner(System.in);
 		System.out.println("");
 		System.out.println("Digite el numero de la actividad que desea realizar: "+
 			"\n 1. Contratar Empleado\n 2. Despedir Empleado\n "+
-			"3. Actualizar la informacion de un equipo \n4. Mostrar informacion de todos los empleados\n "+
-			"5. Mostrar informacion de los equipos\n 6. Agregar alineacion a un equipo\n "+
-			"7. Ubicar entrenadores en las oficinas\n 8. Ubicar jugadores en los vestuarios\n "+
-			"9. Mostrar la informacion de todo el club\n"+
-			"10. Conocer el precio del mercado de los jugadores y entrenadores\n"+
-			"11. Actualizar informacion de los empleados\n"+
-			"12. Mostrar la ubicacion de los entrenadores en las oficinas");
+			"3. Mostrar informacion de todos los empleados\n "+
+			"4. Mostrar informacion de los equipos\n 5. Agregar alineacion a un equipo\n "+
+			"6. Ubicar entrenadores en las oficinas\n 7. Ubicar jugadores en los vestuarios\n "+
+			"8. Mostrar la informacion de todo el club\n"+
+			"9. Conocer el precio del mercado de los jugadores y entrenadores\n"+
+			"10. Actualizar informacion de los empleados\n"+
+			"11. Mostrar la ubicacion de los entrenadores en las oficinas");
 	}
 	public static void chooseOption(Club club){
 		int menuOption=entrada.nextInt();entrada.nextLine();
@@ -46,40 +46,41 @@ public static Scanner entrada = new Scanner(System.in);
 				chooseOption(club);
 				break;
 			case 3:
-				//setTeamInfo(club);
-				break;
-			case 4:
 				showEmployeesInfo(club);
 				showMenu();
 				chooseOption(club);
 				break;
-			case 5:
+			case 4:
 				showTeamsInfo(club);
 				break;
-			case 6:
+			case 5:
 				addLineupToTeam(club);
 				showMenu();
 				chooseOption(club);
 				break;
-			case 7:
+			case 6:
 				System.out.println(club.situateCoachesInOffices());
 				showMenu();
 				chooseOption(club);
 				break;
-			case 8:
-				//situatePlayersInDressingRoom(club);
+			case 7:
+				System.out.println("A cual equipo quiere organizarle los jugadores A o B");
+				String team=entrada.nextLine().toUpperCase();
+				System.out.println(club.situatePlayersInDressingRooms(team));
+				showMenu();
+				chooseOption(club);
 				break;
-			case 9:
+			case 8:
 				System.out.println(club.showInfo());
 				showMenu();
 				chooseOption(club);
 				break;
-			case 10:
+			case 9:
 				System.out.println(club.showMarketPrices());
 				showMenu();
 				chooseOption(club);
 				break;
-			case 11:
+			case 10:
 				System.out.println("Ingrese el identificador del empleado");
 				String identifier=entrada.nextLine();
 				System.out.println("Ingrese el nuevo nombre del empleado");
@@ -88,7 +89,7 @@ public static Scanner entrada = new Scanner(System.in);
 				int salary=entrada.nextInt();entrada.nextLine();
 				System.out.println(club.setEmployeeInfo(name, identifier, salary));
 				break;
-			case 12:
+			case 11:
 				System.out.println(club.showCoachesInOffices());
 				showMenu();
 				chooseOption(club);

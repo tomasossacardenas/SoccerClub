@@ -32,13 +32,15 @@ public class Player extends Employee implements Price{
 
 	public String showInfo(){
 		String message;
-		message="********************* Jugador ***********************"+
+		message="*************** Jugador ****************"+
 		super.showInfo()+
 		"\n**  Numero de Camisa: "+getShirtNumber()+
 		"\n**  Numero de goles: "+getGoalsNumber()+
 		"\n**  Calificacion: "+getGrade()+
 		"\n**  Posicion: "+getPosition()+
-		"\n***************************************************";
+		"\n**  Precio de mercado: "+calculateMarketPrice()+
+		"\n**  Nivel de estrellas: "+calculateStarLevel()+
+		"\n******************************************";
 
 		return message;
 	}
@@ -59,7 +61,20 @@ public class Player extends Employee implements Price{
 		
 		return marketPrice;
 	}
-	public int calculateStarLevel(){
-		return 1;
+	public double calculateStarLevel(){
+		double starLevel=0;
+		if(getPosition()==Positions.PORTERO){
+			starLevel=(getGrade()*0.9);
+		}
+		if(getPosition()==Positions.DEFENSA){
+			starLevel=(getGrade()*0.9)+(getGoalsNumber()/100);
+		}
+		if(getPosition()==Positions.VOLANTE){
+			starLevel=(getGrade()*0.9)+(getGoalsNumber()/90);
+		}
+		if(getPosition()==Positions.DELANTERO){
+			starLevel=(getGrade()*0.9)+(getGoalsNumber()/80);
+		}
+		return starLevel;
 	}
 }

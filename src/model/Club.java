@@ -38,6 +38,13 @@ public class Club{
 		"\n**  NIT: "+getNit()+
 		"\n**  Fecha Fundacion: "+getFoundationDate()+
 		"\n*************************************";
+		for(int i=0;i<employees.size();i++){
+			message+=showTeamsInfo(i);
+		}
+		for(int i=0;i<employees.size();i++){
+			message+=showInfo(i);
+		}
+
 		return message;
 	}
 	public String createTeams(){
@@ -50,7 +57,12 @@ public class Club{
 	}
 	public void createDressingRooms(){
 		for(int i=0; i<NUM_TEAMS;i++){
-			teams[i].createDressingRooms();
+			if(i==0){
+				teams[i].createDressingRooms(7,6);
+			}
+			if(i==1){
+				teams[i].createDressingRooms(7,7);
+			}
 		}
 	}
 	public boolean findEmployee(String identifier){
@@ -315,6 +327,11 @@ public class Club{
 	}
 	public String returnFormation(String teamName, String lineupName){
 		String mensaje=returnTeam(teamName).returnFormation(lineupName);
+		return mensaje;
+	}
+	public String situatePlayersInDressingRooms(String teamName){
+		Team teamx=returnTeam(teamName);
+		String mensaje=teamx.situatePlayersInDressingRooms();
 		return mensaje;
 	}
 

@@ -1,5 +1,5 @@
 package model;
 public interface Price{
 	public double calculateMarketPrice();
-	public int calculateStarLevel();
+	public double calculateStarLevel();
 }

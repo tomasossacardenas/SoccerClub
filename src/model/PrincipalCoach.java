@@ -28,6 +28,8 @@ public class PrincipalCoach extends Coach implements Price{
 		"\n**  Equipos que ha estado cargo: "+getTeamsInCharge()+
 		"\n**  Campeonatos ganados: "+getChampionshipWon()+
 		"\n**  Nombre de campeonatos ganados: "+championshipsNames+
+		"\n**  Precio de mercado: "+calculateMarketPrice()+
+		"\n**  Nivel de estrellas: "+calculateStarLevel()+
 		"\n***************************************************";
 
 		return message;
@@ -37,7 +39,9 @@ public class PrincipalCoach extends Coach implements Price{
 		marketPrice=(getSalary()*10)+(getExperienceYears()*100)+(getChampionshipWon()*50);
 		return marketPrice;
 	}
-	public int calculateStarLevel(){
-		return 1;
+	public double calculateStarLevel(){
+		double starLevel=0;
+		starLevel=5+(getChampionshipWon()/10);
+		return starLevel;
 	}
 }

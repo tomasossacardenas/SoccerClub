@@ -2,7 +2,7 @@ package model;
 import java.util.*;
 public class Team{
 	//constants
-	public final static int ASSISTANTS_QUANTITY=3, MAX_PLAYERS=25, NUM_DRESSINGROOMS=2;
+	public final static int ASSISTANTS_QUANTITY=3, MAX_PLAYERS=25;
 //atributes
 	private String name;
 	//relations
@@ -10,15 +10,12 @@ public class Team{
 	private PrincipalCoach coach;
 	private Assistant[] assistants;
 	private Player[] players;
-	private DressingRoom dressingRoom1;
-	private DressingRoom dressingRoom2;
+	private Player[][] dressingRoom;
 //CONSTRUCTOR
 	public Team(String name){
 		this.name=name;
 		assistants=new Assistant[ASSISTANTS_QUANTITY];
 		players=new Player[MAX_PLAYERS];
-		dressingRoom1= new DressingRoom("A",6,7);
-		dressingRoom2= new DressingRoom("B",7,7);
 		lineups=new ArrayList<Lineups>();
 		coach=null;
 	}
@@ -107,12 +104,48 @@ public class Team{
 		"\n****************************************";
 		return message;
 	}
-	public void createDressingRooms(){
-		dressingRoom1=new DressingRoom("A", 6,7);
-		dressingRoom2=new DressingRoom("B", 7, 7);
+	public void createDressingRooms(int largo, int ancho){
+		dressingRoom=new Player[largo][ancho];
 	}
 	public String situatePlayersInDressingRooms(){
-		return "hola";
+		boolean salir=false;
+		ArrayList<Integer>position=new ArrayList<Integer>();
+		for(int i=0;i<players.length;i++){
+			position.add(i);
+		}
+		Collections.shuffle(position);
+
+		for(int i = 0; i < dressingRoom.length; i++){ 
+			for(int j = 0; j < dressingRoom[i].length; j++){ 
+				dressingRoom[i][j]=null;
+			} 
+		}
+		for (int e=0; e<players.length; e++){
+			salir=false;
+				for ( int i = 0; i < dressingRoom.length && salir==false; i+=2 ){
+				      for ( int j = 0; j < dressingRoom[i].length && salir==false; j+=2 ){
+				          if (dressingRoom[i][j]==null){
+				          	dressingRoom[i][j]=players[position.get(e)];
+				          	salir=true;
+				          }
+				      }
+		   		}
+		}
+
+		String mensaje="************** Ocupacion Vestuarios***********\n";
+		for(int i = 0; i < dressingRoom.length; i++){ 
+			for(int j = 0; j < dressingRoom[i].length; j++){ 
+				if(dressingRoom[i][j]!=null){
+					mensaje+="["+dressingRoom[i][j].getName()+"]";	// Imprime el nombre del jugador en dicha posicion 
+				}
+				else{
+					mensaje+="[ ]";
+				}
+			} 
+			mensaje+="\n";	// imprime el salto de linea para imprimir la siguiente fila
+		}
+
+		return mensaje;
 	}
 	public String addLineup(String date, Tactics tactic, String lineup,  int defensas, int volantes, int delanteros){
 		int[][] formation=new int[10][7];
