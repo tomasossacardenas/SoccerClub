@@ -25,6 +25,11 @@ public class Lineups{
 	public String getName(){
 		return name;
 	}
+/**
+* This method returns the formation in the format defensors-middlefielders-forwarders. <br>
+*<b>Pos:</b>The formation has been returned correctly.<br>
+* @return lineup, is the formation in the format defensors-middlefielders-forwarders.
+*/
 	public String getFormation(){
 		int defensaCounter=0;
 		int delanteroCounter=0;

@@ -45,6 +45,11 @@ public abstract class Employee{
 	public void setActivo(boolean activo){
 		this.activo=activo;
 	}
+/**
+* This method shows the employee info. <br>
+*<b>Pos:</b>The information has been shown correctly<br>
+* @return message, String that shows the info of the employee.
+*/
 	public String showInfo(){
 		String message;
 		message="\n**  Nombre: "+getName()+

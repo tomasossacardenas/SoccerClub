@@ -17,6 +17,11 @@ public class PrincipalCoach extends Coach implements Price{
 	public int getChampionshipWon(){
 		return championshipsWon;
 	}
+/**
+* This method shows the coach info. <br>
+*<b>Pos:</b>The information has been shown correctly<br>
+* @return message, String that shows the info of the coach.
+*/
 	public String showInfo(){
 		String message;
 		String championshipsNames="";
@@ -34,11 +39,21 @@ public class PrincipalCoach extends Coach implements Price{
 
 		return message;
 	}
+/**
+* This method calculattes the market price of the coach. <br>
+*<b>Pos:</b>The market price has been calculated correctly.<br>
+* @return marketPrice, double is the marketprice depending on the position and other factors.
+*/
 	public double calculateMarketPrice(){
 		double marketPrice;
 		marketPrice=(getSalary()*10)+(getExperienceYears()*100)+(getChampionshipWon()*50);
 		return marketPrice;
 	}
+/**
+* This method calculates the star level of the coach. <br>
+*<b>Pos:</b>The star level has been calculated correctly.<br>
+* @return starLevel, double is the star Level depending on the position and other factors.
+*/
 	public double calculateStarLevel(){
 		double starLevel=0;
 		starLevel=5+(getChampionshipWon()/10);

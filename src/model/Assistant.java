@@ -17,6 +17,11 @@ public class Assistant extends Coach{
 	public Expertice[] getExpertice(){
 		return expertices;
 	}
+/**
+* This method shows the assistant info. <br>
+*<b>Pos:</b>The information has been shown correctly<br>
+* @return message, String that shows the info of the assistant.
+*/
 	public String showInfo(){
 		String message;
 		String experticeNames="";

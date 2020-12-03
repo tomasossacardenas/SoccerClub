@@ -10,6 +10,11 @@ public abstract class Coach extends Employee{
 	public int getExperienceYears(){
 		return experienceYears;
 	}
+/**
+* This method shows the coach info. <br>
+*<b>Pos:</b>The information has been shown correctly<br>
+* @return message, String that shows the info of the coach.
+*/
 	public String showInfo(){
 		String message;
 		message=super.showInfo()+"\n**  Años de experiencia: "+getExperienceYears();

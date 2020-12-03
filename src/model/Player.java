@@ -29,7 +29,11 @@ public class Player extends Employee implements Price{
 	public Positions getPosition(){
 		return position;
 	}
-
+/**
+* This method shows the player info. <br>
+*<b>Pos:</b>The information has been shown correctly<br>
+* @return message, String that shows the info of the player.
+*/
 	public String showInfo(){
 		String message;
 		message="*************** Jugador ****************"+
@@ -44,6 +48,11 @@ public class Player extends Employee implements Price{
 
 		return message;
 	}
+/**
+* This method calculattes the market price of the player. <br>
+*<b>Pos:</b>The market price has been calculated correctly.<br>
+* @return marketPrice, double is the marketprice depending on the position and other factors.
+*/
 	public double calculateMarketPrice(){
 		double marketPrice=0;
 		if(getPosition()==Positions.PORTERO){
@@ -61,6 +70,11 @@ public class Player extends Employee implements Price{
 		
 		return marketPrice;
 	}
+/**
+* This method calculates the star level of the player. <br>
+*<b>Pos:</b>The star level has been calculated correctly.<br>
+* @return starLevel, double is the star Level depending on the position and other factors.
+*/
 	public double calculateStarLevel(){
 		double starLevel=0;
 		if(getPosition()==Positions.PORTERO){
